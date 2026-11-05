@@ -1,11 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Тестирование по C# для учеников</title>
+    <style>
+        body { background-color: #f8f9fa; font-family: system-ui, -apple-system, sans-serif; padding: 20px; margin: 0; }
+        .quiz-container { max-width: 700px; margin: 30px auto; }
+        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .text-center { text-align: center; }
+        .d-none { display: none !important; }
+        .mb-3 { margin-bottom: 1rem; }
+        .mb-4 { margin-bottom: 1.5rem; }
+        .mt-3 { margin-top: 1rem; }
+        .text-primary { color: #0d6efd; }
+        .text-muted { color: #6c757d; }
+        .btn { display: inline-block; padding: 12px 24px; font-size: 1rem; border-radius: 6px; border: none; cursor: pointer; font-weight: bold; text-decoration: none; }
+        .btn-primary { background-color: #0d6efd; color: white; }
+        .btn-lg { padding: 15px 30px; font-size: 1.25rem; }
+        .btn-success { background-color: #198754; color: white; }
+        .btn:disabled { background-color: #6c757d; opacity: 0.65; cursor: not-allowed; }
+        .float-end { float: right; }
+        .clearfix::after { content: ""; clear: both; display: table; }
+        .code-block { background-color: #212529; color: #f8f9fa; font-family: monospace; padding: 15px; border-radius: 6px; margin-bottom: 15px; white-space: pre-wrap; text-align: left; }
+        .list-group { margin-bottom: 1.5rem; padding: 0; }
+        .list-group-item { display: block; width: 100%; padding: 15px; margin-bottom: 10px; background: #fff; border: 1px solid #dee2e6; border-radius: 6px; text-align: left; cursor: pointer; font-size: 1rem; box-sizing: border-box; }
+        .list-group-item:hover { background-color: #f8f9fa; }
+        .list-group-item.selected { background-color: #0d6efd !important; color: white; border-color: #0d6efd; }
+        .progress-bar-container { background-color: #e9ecef; border-radius: 4px; height: 8px; width: 100%; margin-bottom: 20px; }
+        .progress-bar { background-color: #0d6efd; height: 100%; width: 0%; transition: width 0.3s ease; border-radius: 4px; }
+        .badge { display: inline-block; padding: 6px 12px; background: #6c757d; color: white; border-radius: 4px; font-size: 0.85rem; }
+        .bg-info { background-color: #0dcaf0; color: #000; }
+        .d-flex { display: flex; justify-content: space-between; align-items: center; }
+        .text-success { color: #198754; }
+        .text-warning { color: #ffc107; }
+        .text-danger { color: #dc3545; }
+        .display-4 { font-size: 3.5rem; font-weight: 300; }
+        .lead { font-size: 1.25rem; font-weight: 300; }
+    </style>
 </head>
 <body>
-    Гооге Е. И
+
+<div class="container quiz-container">
+    <div id="start-screen" class="card shadow p-4 text-center">
+        <h1 class="mb-3 text-primary">Тестирование по C#</h1>
+        <p class="text-muted">Проверьте свои знания основ языка программирования C#.</p>
+        <button class="btn btn-primary btn-lg mt-3" id="start-btn">Начать тест</button>
+    </div>
+
+    <div id="quiz-screen" class="card shadow p-4 d-none">
+        <div class="d-flex mb-3">
+            <span class="badge" id="progress-text">Вопрос 1</span>
+            <span class="badge bg-info" id="score-text">Очки: 0</span>
+        </div>
+        <div class="progress-bar-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <h3 id="question-text" class="mb-3">Текст вопроса</h3>
+        <div id="question-code" class="code-block d-none"></div>
+        <div class="list-group" id="answers-container"></div>
+        <div class="clearfix">
+            <button id="next-btn" class="btn btn-success float-end" disabled>Далее</button>
+        </div>
+    </div>
+
+    <div id="result-screen" class="card shadow p-4 text-center d-none">
+        <h2 class="mb-3">Тест завершен!</h2>
+        <div class="display-4 my-4" id="final-score">0 / 0</div>
+        <p class="lead mb-4" id="result-message">Отличный результат!</p>
+        <button class="btn btn-primary" id="restart-btn">Пройти еще раз</button>
+    </div>
+</div>
+
+<!-- Подключаем скрипт в самом конце -->
+<script src="script.js"></script>
 </body>
 </html>
